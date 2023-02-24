@@ -19,7 +19,7 @@ export class AppController {
   ) {
     // リクエスト署名を検証します。
     const webhookToken = process.env.WEBHOOK_TOKEN;
-    const privateKey = Buffer.from(webhookToken).toString('base64');
+    const privateKey = Buffer.from(webhookToken, 'base64');
     const actualSignature = createHmac('sha256', privateKey)
       .update(req.rawBody)
       .digest('base64');

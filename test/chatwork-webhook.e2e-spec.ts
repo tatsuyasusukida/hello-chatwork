@@ -19,7 +19,7 @@ describe('Chatwork Webhook', () => {
     });
 
     const webhookToken = process.env.WEBHOOK_TOKEN;
-    const privateKey = Buffer.from(webhookToken).toString('base64');
+    const privateKey = Buffer.from(webhookToken, 'base64');
     const webhookSignature = createHmac('sha256', privateKey)
       .update(requestBody)
       .digest('base64');
